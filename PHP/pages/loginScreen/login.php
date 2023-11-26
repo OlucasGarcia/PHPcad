@@ -1,3 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuário não encontrado!</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['inp_email'];
@@ -5,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $servername = "localhost";
     $username = "root";
-    $password = "minas";
+    $password = "";
     $dbname = "phpcharles";
 
     $conn = new mysqli($servername, $username, $password, $dbname);
@@ -27,13 +36,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             header("Location: ../inicialScreen/");
             exit();
         } else {
-            echo "Senha incorreta!";
+            echo "
+            <h1>Senha incorreta!</h1>
+            <button class='botao-voltar' onclick=\"location.href='../loginScreen/'\">
+            <a>Voltar</a>
+            </button>";
         }
     } else {
-        echo "Usuário não encontrado!";
+        echo "
+        <h1>Usuário não encontrado!</h1>
+        <button class='botao-voltar' onclick=\"location.href='../loginScreen/'\">
+        <a>Voltar</a>
+        </button>
+        ";
     }
 
     $sql->close();
     $conn->close();
 }
 ?>
+
+</body>
+</html>

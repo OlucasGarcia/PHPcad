@@ -1,3 +1,4 @@
+bdaluno.sql
 -- phpMyAdmin SQL Dump
 -- version 4.7.0
 -- https://www.phpmyadmin.net/
@@ -29,6 +30,16 @@ SET time_zone = "+00:00";
 --
 create DATABASE phpCharles;
 use phpCharles;
+
+CREATE TABLE tbl_user (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome_completo VARCHAR(255) NOT NULL,
+    unidade_escolar VARCHAR(255) NOT NULL,
+    cpf INT NOT NULL,
+    rg INT NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    senha VARCHAR(255) NOT NULL
+);
 
 
 CREATE TABLE `tbl_aluno` (

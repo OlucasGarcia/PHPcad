@@ -4,8 +4,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Login</title>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <script src="js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="style.css">
   </head>
 
@@ -18,6 +16,9 @@
         <input type="email" placeholder="👤 Email" name="inp_email">
         <input type="password" placeholder="🔒 Senha" name="inp_senha">
         <button type="submit">LOGIN</button>
+        <button class="botao" onclick="location.href='../cadastroUser/'">
+        <a>CRIAR CADASTRO</a>
+        </button>
       </form>
     </div>
 </body>

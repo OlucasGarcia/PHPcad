@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $servername = "localhost";
     $username = "root";
-    $password = "minas";
+    $password = "";
     $dbname = "phpCharles";
 
     $data_nascimento = date("Y-m-d", strtotime($data_nascimento));
@@ -38,7 +38,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         die("Erro na preparação da consulta: " . $conn->error);
     }
 
-   
     $sql->bind_param("ssssssssss", $nome, $sobrenome, $endereco, $cidade, $cep, $cpf, $rg, $data_nascimento, $celular, $email);
 
     $result = $sql->execute();
@@ -49,11 +48,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if($result === true){
 
-        print "<div class='divInteira'>
-        
-        <button onClick=\"location.href='../inicialScreen/'\">CONFIRMAR</button>
-        
-        </div>";
+        print "
+        <h1>Cadastro feito com sucesso</h1>
+        <button class='botao-confirma' onclick=\"location.href='../inicialScreen/'\">
+        <a>CONFIRMAR</a>
+        </button>
+        <button class='botao-lista' onclick=\"location.href='../listarScreen/'\">
+        <a>VER LISTA DE CADASTRO</a>
+        </button>
+        ";
 
     }
 

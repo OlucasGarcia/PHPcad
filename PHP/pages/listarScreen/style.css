@@ -1,0 +1,108 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(to right, #2d2d42, #161d33);
+    background-size: 500% auto;
+    animation: fundo-animado 3s infinite alternate;
+    color: #f9f9f9;
+    margin: auto;
+    display: grid;
+    text-align: center;
+}
+
+table {
+    line-height: 40px;
+    font-weight: 600;
+    margin: auto auto 20px;
+}
+
+th, .bg {
+    background-color: #f9f9f9;
+    color: #1d1e20;
+}
+
+.borda-left {
+    border-top-left-radius: 20px;
+}
+
+.borda-right {
+    border-top-right-radius: 20px;
+}
+
+td {
+    width: 200px;
+    text-align: center;
+    background-color: #1d1e20;
+    padding: 0 10px 0 10px;
+}
+
+td:hover {
+    background: #4f2ee2;
+    transition: .2s;
+}
+
+button {
+    cursor: pointer;
+}
+
+.botao-editar {
+    border: none;
+    width: 60px;
+    height: 25px;
+    border-radius: 5px;
+    margin: 0 10px;
+    background: #17c74c;
+    color: #f9f9f9;
+    font-weight: 600;
+}
+
+.botao-excluir {
+    border: none;
+    width: 60px;
+    height: 25px;
+    border-radius: 5px;
+    margin: 0 10px;
+    background: #cc1717;
+    color: #f9f9f9;
+    font-weight: 600;
+}
+
+button:hover {
+    box-shadow: rgba(34, 34, 34, 0.61) 1px 1px 10px;
+    transition: .3s;
+}
+
+@keyframes fundo-animado {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
+@media (max-width: 730px) {
+    table {
+        line-height: min-content;
+        margin: 0 2% 5% 2%;
+    }
+
+    td {
+        min-width: min-content;
+    }
+
+    h1 {
+        font-size: 200%;
+    }
+
+}
+
+@media (min-width: 731px) and (max-width: 1080px){
+    table {
+        line-height: 30px;
+        margin: 0 2% 5% 2%;
+    }
+
+    td {
+        min-width: min-content;
+    }
+}

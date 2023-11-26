@@ -1,3 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrado com Sucesso!</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nome = $_POST['inp_cdt_nome'];
@@ -9,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $servername = "localhost";
     $username = "root";
-    $password = "minas";
+    $password = "";
     $dbname = "phpcharles";
 
     $senha_hash = password_hash($senha, PASSWORD_DEFAULT);
@@ -31,7 +40,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $result = $sql->execute();
 
     if ($result) {
-        echo "Dados inseridos com sucesso!";
+        echo "
+        <h1>Você foi cadastrado com sucesso ✔</h1>
+        <button class='botao-confirma' onclick=\"location.href='../loginScreen/'\">
+        <a>Confirmar</a>
+        </button>
+        ";
     } else {
         die("Erro na execução da consulta: " . $sql->error);
     }
@@ -40,3 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $conn->close();
 }
 ?>
+</body>
+</html>
+
+

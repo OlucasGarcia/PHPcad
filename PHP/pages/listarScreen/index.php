@@ -7,12 +7,12 @@
 </head>
 <body>
 
-    <h1>Listar contatos</h1>
+    <h1>Lista de cadastrados 📃</h1>
 
     <?php
     $servername = "localhost";
     $username = "root";
-    $password = "minas";
+    $password = "";
     $dbname = "phpCharles";
 
     $conn = new mysqli($servername, $username, $password, $dbname);
@@ -29,21 +29,40 @@
     }
 
     if ($res->num_rows > 0) {
-        echo "<table border='1'>";
-        echo "<tr><th>Nome</th><th>Sobrenome</th><th>Endereço</th><th>Cidade</th><th>CEP</th><th>CPF</th><th>RG</th><th>Data Nascimento</th><th>Celular</th><th>Email</th></tr>";
+        echo "<table>";
+        echo "<tr>
+            <th class='borda-left'>ID</th>
+            <th>Nome</th>
+            <th>CPF</th>
+            <th>Email</th>
+            <th class='borda-right'>Ações</th>
+            </tr>";
 
         while ($row = $res->fetch_assoc()) {
             echo "<tr>";
-            echo "<td>" . $row['aluno_nome'] . "</td>";
-            echo "<td>" . $row['aluno_sobrenome'] . "</td>";
-            echo "<td>" . $row['aluno_endereco'] . "</td>";
-            echo "<td>" . $row['aluno_cidade'] . "</td>";
-            echo "<td>" . $row['aluno_cep'] . "</td>";
+            echo "<td class='bg'>" . $row['aluno_id'] . "</td>";
+            echo "<td>" . $row['aluno_nome'] . " " . $row['aluno_sobrenome'] . "</td>";
+            //echo "<td>" . $row['aluno_sobrenome'] . "</td>";
+            //echo "<td>" . $row['aluno_endereco'] . "</td>";
+            //echo "<td>" . $row['aluno_cidade'] . "</td>";
+            //echo "<td>" . $row['aluno_cep'] . "</td>";
             echo "<td>" . $row['aluno_cpf'] . "</td>";
-            echo "<td>" . $row['aluno_rg'] . "</td>";
-            echo "<td>" . $row['aluno_data_nasc'] . "</td>";
-            echo "<td>" . $row['aluno_celular'] . "</td>";
+            //echo "<td>" . $row['aluno_rg'] . "</td>";
+            //echo "<td>" . $row['aluno_data_nasc'] . "</td>";
+            //echo "<td>" . $row['aluno_celular'] . "</td>";
             echo "<td>" . $row['aluno_email'] . "</td>";
+            echo "<td>
+                    <button class='botao-editar' onclick=\"location.href='../editScreen/'". $row['aluno_nome'] . "';\"
+                    >
+                    <a>
+                    Editar
+                    </a>
+                    </button>
+                    <button type='submit' class='botao-excluir'>
+                    <a>
+                    Excluir
+                    </a>
+                    </td>";
             echo "</tr>";
         }
 
