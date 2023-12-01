@@ -79,6 +79,7 @@ button {
 }
 
 .botao {
+    margin-top: 10px;
     background: #17c74c;
 }
 
@@ -101,6 +102,13 @@ a {
     color: #f9f9f9;
     font-weight: 600;
 }
+.cont{
+    width: 100%;
+    margin: 0;
+    display: grid;
+    gap: 16px;
+    justify-content: center;
+}
 
 @keyframes fundo-animado {
     0% {
@@ -118,7 +126,8 @@ a {
     }
 
     .login-form > input,
-    .login-form > button {
+    .login-form > button, 
+    .botao {
     width: 250px;
 }
 }

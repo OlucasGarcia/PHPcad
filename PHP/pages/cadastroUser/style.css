@@ -80,6 +80,13 @@ button {
     box-shadow: rgba(0, 0, 0, 0.767) 2px 5px 10px;
 }
 
+.botao-voltar {
+    background: #cc1717;
+    color: #f9f9f9;
+    font-weight: 600;
+    box-shadow: rgba(0, 0, 0, 0.767) 2px 5px 10px;
+}
+
 a {
     text-decoration: none;
     color: #f9f9f9;

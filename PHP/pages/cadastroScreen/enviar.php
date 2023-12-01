@@ -8,6 +8,9 @@
 </html>
 
 <?php
+
+include('../../db/config.php');
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nome = $_POST['inp_cdt_nome'];
     $sobrenome = $_POST['inp_cdt_sobrenome'];
@@ -20,17 +23,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $celular = $_POST['inp_cdt_celular'];
     $email = $_POST['inp_cdt_email'];
 
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "phpCharles";
 
     $data_nascimento = date("Y-m-d", strtotime($data_nascimento));
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
-    if ($conn->connect_error) {
-        die("Erro na conexão com o banco de dados: " . $conn->connect_error);
-    }
+   
 
     $sql = $conn->prepare("INSERT INTO tbl_aluno (aluno_nome, aluno_sobrenome, aluno_endereco, aluno_cidade, aluno_cep, aluno_cpf, aluno_rg, aluno_data_nasc, aluno_celular, aluno_email) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 

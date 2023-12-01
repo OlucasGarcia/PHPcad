@@ -37,12 +37,18 @@ body {
     box-shadow: rgba(0, 0, 0, 0.767) 2px 5px 10px;
 }
 
-button {
-    margin-top: -100px;
-    width: 200px;
+.sair {
+    display: grid;
+    width: 190px;
+    height: 56px;
+    margin: 0;
+    border-radius: 8px;
+    border: none;
     background: #cc1717;
     font-weight: 600;
+    align-items: center;
     box-shadow: rgba(0, 0, 0, 0.767) 2px 5px 10px;
+    cursor: pointer;
 }
 
 a, p {
@@ -52,6 +58,11 @@ a, p {
     font-weight: 600;
 }
 
+.sair:hover{
+    box-shadow: #e033338c 2px 5px 10px;
+    transition: .5s;
+
+}
 .principal:hover {
     background-color: #f9f9f9;
     color: #4f2ee2;

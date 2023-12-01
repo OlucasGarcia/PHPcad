@@ -1,34 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+    
+    <button class='botao-voltar' onclick="location.href='../inicialScreen/'">
+    <a>Voltar</a>
+    </button>
 
     <h1>Lista de cadastrados 📃</h1>
 
     <?php
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "phpCharles";
+    include('../../db/config.php');
 
-    $conn = new mysqli($servername, $username, $password, $dbname);
 
-    if ($conn->connect_error) {
-        die("Erro na conexão com o banco de dados: " . $conn->connect_error);
+    if (isset($_GET['delete_id'])) {
+        $delete_id = $_GET['delete_id'];
+        
+        
+        $delete_sql = "DELETE FROM tbl_aluno WHERE aluno_id = $delete_id";
+        
+        $result = $conn->query($delete_sql);
+        
+        if ($result === false) {
+            echo "Erro na exclusão: " . $conn->error;
+        }
     }
 
-    $sql = "SELECT * FROM tbl_aluno";
-    $res = $conn->query($sql);
+   
+    $select_sql = "SELECT * FROM tbl_aluno";
+    $select_result = $conn->query($select_sql);
 
-    if ($res === false) {
+    if ($select_result === false) {
         die("Erro na consulta: " . $conn->error);
     }
 
-    if ($res->num_rows > 0) {
+    if ($select_result->num_rows > 0) {
         echo "<table>";
         echo "<tr>
             <th class='borda-left'>ID</th>
@@ -38,31 +50,20 @@
             <th class='borda-right'>Ações</th>
             </tr>";
 
-        while ($row = $res->fetch_assoc()) {
+        while ($row = $select_result->fetch_assoc()) {
             echo "<tr>";
             echo "<td class='bg'>" . $row['aluno_id'] . "</td>";
             echo "<td>" . $row['aluno_nome'] . " " . $row['aluno_sobrenome'] . "</td>";
-            //echo "<td>" . $row['aluno_sobrenome'] . "</td>";
-            //echo "<td>" . $row['aluno_endereco'] . "</td>";
-            //echo "<td>" . $row['aluno_cidade'] . "</td>";
-            //echo "<td>" . $row['aluno_cep'] . "</td>";
             echo "<td>" . $row['aluno_cpf'] . "</td>";
-            //echo "<td>" . $row['aluno_rg'] . "</td>";
-            //echo "<td>" . $row['aluno_data_nasc'] . "</td>";
-            //echo "<td>" . $row['aluno_celular'] . "</td>";
             echo "<td>" . $row['aluno_email'] . "</td>";
             echo "<td>
-                    <button class='botao-editar' onclick=\"location.href='../editScreen/'". $row['aluno_nome'] . "';\"
-                    >
-                    <a>
-                    Editar
-                    </a>
-                    </button>
-                    <button type='submit' class='botao-excluir'>
-                    <a>
-                    Excluir
-                    </a>
-                    </td>";
+                <button class='botao-editar' onclick=\"location.href='../editScreen/?id=" . $row['aluno_id'] . "';\">
+                    <a>Editar</a>
+                </button>
+                <button class='botao-excluir' onclick=\"confirmarExclusao(" . $row['aluno_id'] . ")\">
+                    <a>Excluir</a>
+                </td>";
+
             echo "</tr>";
         }
 
@@ -74,6 +75,14 @@
     $conn->close();
     ?>
 
+    <script>
+        function confirmarExclusao(id) {
+            if (confirm("Tem certeza que deseja excluir este registro?")) {
+                window.location.href = "?delete_id=" + id;
+            }
+        }
+    </script>
 
 </body>
+
 </html>

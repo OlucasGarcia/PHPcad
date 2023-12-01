@@ -18,6 +18,9 @@
     <input type="email" placeholder="Email" name="inp_cdt_email" required>
     <input type="password" placeholder="Senha" name="inp_cdt_senha" required>
     <button type="submit">CRIAR CADASTRO</button>
+    <button class='botao-voltar' onclick="location.href='../loginScreen/'">
+    <a>Voltar</a>
+    </button>
 </form>
 
     </div>

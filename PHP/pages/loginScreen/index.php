@@ -16,10 +16,12 @@
         <input type="email" placeholder="👤 Email" name="inp_email">
         <input type="password" placeholder="🔒 Senha" name="inp_senha">
         <button type="submit">LOGIN</button>
-        <button class="botao" onclick="location.href='../cadastroUser/'">
+      </form>
+      <div class="cont">
+      <button class="botao" onclick="location.href='../cadastroUser/'">
         <a>CRIAR CADASTRO</a>
         </button>
-      </form>
+        </div>
     </div>
 </body>
 </html>

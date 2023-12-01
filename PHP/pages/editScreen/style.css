@@ -1,0 +1,99 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+}
+
+button {
+    cursor: pointer;
+}
+
+body {
+    display: grid;
+    place-items: center;
+    margin: 0;
+    padding: 0 24px;
+    background: linear-gradient(to right, #2d2d42, #161d33);
+    background-size: 500% auto;
+    animation: fundo-animado 3s infinite alternate;
+    color: #f9f9f9;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+    text-align: center;
+}
+
+form {
+    width: 450px;
+    max-height: 800px;
+    padding: 30px 30px 44px;
+    border-radius: 24px;
+    background-color: #1d1e20;
+    text-align: center;
+    margin-top: 30px;
+}
+
+form h2 {
+    margin: 0 0 12px;
+    font-size: 36px;
+    font-weight: 600;
+}
+
+form h3 {
+    margin: 0 0 30px;
+    font-weight: 500;
+    font-size: 16px;
+    color: #f9f9f9;
+}
+
+form input, form button {
+    width: 400px;
+    height: 56px;
+    padding: 0 16px;
+    border-radius: 8px;
+    border: none;
+    margin-bottom: 16px;
+}
+
+form input::placeholder {
+    color: #888; /* Tonalidade cinza para o texto do placeholder */
+}
+
+form button {
+    background: #4f2ee2;
+    color: #f9f9f9;
+    font-weight: 600;
+    box-shadow: rgba(0, 0, 0, 0.767) 2px 5px 10px;
+}
+
+a {
+    text-decoration: none;
+    color: #f9f9f9;
+    font-size: 18px;
+}
+
+@keyframes fundo-animado {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
+@media (max-width: 550px) {
+    form {
+        width: 300px;
+        margin-top: 30px;
+    }
+
+    form input,
+    form button {
+        width: 250px;
+    }
+}

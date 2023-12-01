@@ -12,7 +12,7 @@
     <div class="hero">
     <h1>Seja bem vindo!</h1>
     
-    <button onclick="location.href='../loginScreen/'">
+    <button onclick="location.href='./loginScreen/'">
     <a>Iniciar</a>
     </button>
     </div>

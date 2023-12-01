@@ -18,18 +18,16 @@ session_start();
             
                 <a href="../cadastroScreen/" class="principal">Cadastrar</a>
             
-            
-            
                 <a href="../listarScreen/" class="principal">Listar</a>
         </div>
     </main>
 
     <?php
 
-    if (isset($_SESSION['user_id'])) {
+    if (isset($_SESSION['user_email'])) {
         echo "<div>
             <form action='logout.php' class='cadastro-form' method='post'>
-            <button type='submit'>
+            <button type='submit' class='sair'>
             <p>SAIR</p>
             </button>
             </form>

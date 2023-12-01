@@ -1,23 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
 
-    <h1>Editar contato</h1>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <h1>Editar Aluno</h1>
+
     <?php
-        $sql = "SELECT * FROM tblContato WHERE contato_codigo=".$_REQUEST["contato_codigo"];
+    include('../../db/config.php');
+
+    if (isset($_GET['id'])) {
+        $aluno_id = $_GET['id'];
+
+        $sql = "SELECT * FROM tbl_aluno WHERE aluno_id = $aluno_id";
         $res = $conn->query($sql);
-        $row = $res->fetch_object();
+
+        if ($res === false) {
+            die("Erro na consulta: " . $conn->error);
+        }
+
+        if ($res->num_rows > 0) {
+            $row = $res->fetch_assoc();
+
+            echo 
+            "<form action='processar_edicao.php' method='post'>
+                    <input type='hidden' name='aluno_id' value='" . $row['aluno_id'] . "'>
+                    <label for='aluno_nome'>Nome:</label>
+                    <input type='text' name='aluno_nome' placeholder='" . $row['aluno_nome'] . "'>
+                    <label for='aluno_sobrenome'>Sobrenome:</label>
+                    <input type='text' name='aluno_sobrenome' placeholder='" . $row['aluno_sobrenome'] . "'>
+                    <label for='aluno_cpf'>CPF:</label>
+                    <input type='text' name='aluno_cpf' placeholder='" . $row['aluno_cpf'] . "'>
+                    <label for='aluno_email'>Email:</label>
+                    <input type='email' name='aluno_email' placeholder='" . $row['aluno_email'] . "'>
+                    
+                    <button type='submit'>Salvar</button>
+                </form>";
+        } else {
+            echo "<p>Aluno não encontrado!</p>";
+        }
+    } else {
+        echo "<p>ID do aluno não especificado!</p>";
+    }
+
+    $conn->close();
     ?>
 
-    <form action="?page=salvar" method="POST">
-        <input type="hidden" name="acao" value="editar">
-        <input type="hidden" name="contato_codigo" value="<?php print $row->contato_codigo;?>">
-        <div class="mb-3">
-            <label>Nome</label>
-            <input type="text" name="txt_nome" value="<?php print $row->contato_nome;?>" class="form-control">
-        </div>
-        <div class="mb-3">
-            <label>Celular</label>
-            <input type="text" name="txt_celular" value="<?php print $row->contato_celular?>" class="form-control">
-        </div>
-        <div class="mb-3">
-            <button type="submit" name="btn-enviar" class="btn btn-primary">Enviar</button>
-        </div>
-    </form>
+</body>
+
+</html>
